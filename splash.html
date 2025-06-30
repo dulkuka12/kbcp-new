@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="icon-512.png">
+  <link rel="stylesheet" href="style.css">
+  <title>성공회 사목예식서</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+</head>
+<title>로딩 중...</title>
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #183b5c;
+  }
+
+  .splash-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url('icon-512.png');
+    background-size: contain;
+    /* 아이콘이 잘리지 않도록 */
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
+</head>
+
+<body>
+  <div class="splash-icon"></div>
+
+  <script>
+
+    console.log("Splash screen loaded");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1000); // 1초 후에 index.html로 이동
+
+  </script>
+</body>
+
+</html>

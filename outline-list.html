@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신앙의 개요 목록</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="grid1" id="buttonGrid"></div>
+
+  <script src="main.js" defer></script>
+
+  <script>
+
+    const titles = [
+      "제1장 인간의 본질",
+      "제2장 성부하느님",
+      "제3장 옛 계약 (구약)",
+      "제4장 십계명",
+      "제5장 죄와 구원",
+      "제6장 하느님의 아들",
+      "제7장 새 계약",
+      "제8장 신경",
+      "제9장 성령",
+      "제10장 성서",
+      "제11장 교회",
+      "제12장 사목",
+      "제13장 기도와 예배",
+      "제14장 성사",
+      "제15장 세례(세례성사)",
+      "제16장 감사성찬례(성체성사)",
+      "제17장 다른 성사들",
+      "제18장 그리스도인의 소망"
+    ];
+
+    const grid = document.getElementById('buttonGrid');
+
+    for (let i = 0; i < titles.length; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = titles[i];
+      btn.onclick = function () {
+        location.href = 'outline-text.html#outline' + (i + 1);
+      };
+      grid.appendChild(btn);
+    }
+  </script>
+
+</body>
+
+</html>

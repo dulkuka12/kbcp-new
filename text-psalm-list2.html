@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>날자별 시편</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  </style>
+
+</head>
+
+<body>
+
+  <div class="grid2" id="thirtyGrid"></div>
+  </br>
+  </br>
+  </br>
+  </br>
+
+  <script src="main.js" defer></script>
+
+
+  <script>
+
+    const grid = document.getElementById('thirtyGrid');
+
+    for (let day = 1; day <= 30; day++) {
+      // 아침기도 버튼
+      const morningBtn = document.createElement('button');
+      morningBtn.textContent = `${day}일 아침`;
+      const morningTargetId = 'm' + day;
+      morningBtn.onclick = function () {
+        location.href = 'psalm-text.html?morningId=' + morningTargetId;
+      };
+
+      grid.appendChild(morningBtn);
+
+      // 저녁기도 버튼
+      const eveningBtn = document.createElement('button');
+      eveningBtn.textContent = `${day}일 저녁`;
+      const eveningTargetId = 'e' + day;
+      eveningBtn.onclick = function () {
+        location.href = 'psalm-text.html?eveningId=' + eveningTargetId;
+      };
+
+      grid.appendChild(eveningBtn);
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>

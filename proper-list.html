@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="main.js" defer></script>
+  <title>성찬 특정문</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="grid2" id="buttonGrid"></div>
+
+  <script src="main.js" defer></script>
+
+
+  <script>
+
+    // 절기 이름 배열 (예시입니다. 실제 절기 순서에 맞게 수정 가능)
+    const seasonNames = [
+      "대림-성탄전", "성탄-공현전", "공현-주의세례", "재의수요일-사순3",
+      "사순4-성주간", "성찬제정", "부활-승천전", "승천-부활7",
+      "부활7후-성령강림", "삼위일체", "그리스도 성체", "모든 성인",
+      "연중", "성인축일", "성모축일", "사도 및 복음사가", "성당축성", "세례견진",
+      "교회일치", "별세", "혼배", "특별기원", "평화통일", "치유기원"
+    ];
+    const grid = document.getElementById('buttonGrid');
+    seasonNames.forEach((name, index) => {
+      const btn = document.createElement('button');
+      btn.textContent = name;
+      btn.onclick = function () {
+        location.replace('proper-text.html#section' + (index + 1));
+      };
+      grid.appendChild(btn);
+    });
+
+  </script>
+</body>
+
+</html>

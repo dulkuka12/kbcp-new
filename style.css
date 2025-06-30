@@ -1,0 +1,510 @@
+/* style.css */
+
+/* body에만 적용할 스타일 */
+body {
+  padding-top: 86px;
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f0f6fb;
+}
+
+/* 텍스트 선택 방지만 별도로 적용 */
+body, .body-text, .rubric, .subtitle, .big-title {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+
+.content {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* -------------------------------------------------*/
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #228b22;
+  /* 명시적으로 녹색 지정 */
+  color: white;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  /* 상단바가 가장 위에 위치 */
+}
+
+.menu-icon {
+  font-size: 2.5em;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.navbar h1 {
+  font-size: 1.7em;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+  margin-right: 24px;
+}
+
+/* -------------------------------------------------*/
+
+.side-menu {
+  height: 50%;
+  width: 250px;
+  position: fixed;
+  top: 70px;
+  /* 상단바 아래로 시작 */
+  left: -250px;
+  /* 기본 상태에서 숨김 */
+  background-color: #183b5c;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  color: white;
+  z-index: 1001;
+  /* 상단바 위에 위치 */
+}
+
+.side-menu.open {
+  left: 0;
+  /* 사이드 메뉴 열릴 때 */
+}
+
+.side-menu a {
+  padding: 12px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: white;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.side-menu a:hover {
+  background-color: #2b4e70;
+}
+
+.side-menu .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 44px;               /* 최소 터치 권장 크기 */
+  height: 44px;
+  font-size: 1.5em;
+  line-height: 44px;         /* 가운데 정렬 */
+  text-align: center;
+  cursor: pointer;
+  z-index: 1002;
+  color: white;
+  background-color: transparent;
+  user-select: none;
+}
+
+
+/* 메뉴 버튼 스타일 */
+.menu-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-button {
+  background-color: white;
+  border: 2px solid #d0dce7;
+  border-radius: 10px;
+  padding: 14px;
+  /* 18 */
+  font-size: 1.2em;
+  color: #183b5c;
+  font-weight: bold;
+  text-align: left;
+  /* center */
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.menu-button:hover {
+  background-color: #eaf2fb;
+}
+
+/* 슬라이드 애니메이션 */
+.menu-open {
+  left: 0;
+}
+
+/*---------------------------------------------*/
+
+.big-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 20px;
+  scroll-margin-top: 86px;
+  /* 상단바로 가리지 않게 */
+}
+
+.subtitle {
+  color: #5d6d7e;
+  /* 글자색 */
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 15px;
+  scroll-margin-top: 86px;
+  /* 상단바로 가리지 않게 */
+}
+/*대축일*/
+.subtitle2 {
+  color: #d31717;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-top: 0px;
+  scroll-margin-top: 86px;
+  /* 상단바로 가리지 않게 */
+}
+
+/* 주요축일 */
+.subtitle3 {
+  color: navy;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-top: 0px;
+  scroll-margin-top: 86px;
+  /* 상단바로 가리지 않게 */
+}
+
+.body-text {
+  color: black;
+  font-size: 1.2em;
+  margin-top: 4px;
+  line-height: 1.6em;
+  /* 줄간격 일정하게 만듬 */
+}
+
+.rubric {
+  color: red;
+  font-size: 1.1em;
+  margin-top: 4px;
+  line-height: 1.6em;
+}
+
+.rubric2 {
+  color: blue;
+  font-size: 1.1em;
+  margin-top: 4px;
+  line-height: 1.6em;
+  /* 줄간격 일정하게 만듬 */
+}
+/*정과표 본문*/
+.rubric3 {
+  color: black;
+  font-size: 1.1em;
+  margin-top: 8px;
+  line-height: 1.6em;
+}
+
+.highlight {
+  color: rgb(175, 5, 5);
+  line-height: inherit;
+  /* 줄간격 강제 일치 */
+}
+
+.small-gap {
+  margin-bottom: 10px;
+  /* 반줄 정도 띄우기 */
+}
+
+.small-gap2 {
+  margin-bottom: 5px;
+  /* 반줄보다 적게 띄우기 */
+}
+
+/* -------------------------------------------------*/
+
+.common-button {
+  font-size: 1em;
+  padding: 10px 16px;
+  /* 버튼 안 여백 (크기) */
+  /*width: 100%;   모바일에서 꽉 차게 */
+  margin-left: 15px;
+  /* 제목과 버튼 사이 간격 */
+  background-color: #3374ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  /* 모서리 둥글게 */
+  cursor: pointer;
+}
+
+.common-button:hover {
+  background-color: #3339ff;
+  /* 마우스 올리면 색 변화 */
+}
+
+.common-button2 {
+  font-size: 1em;
+  /* 버튼 글자 크기 */
+  padding: 10px 16px;
+  /* 버튼 안 여백 (크기) */
+  /*width: 100%;   모바일에서 꽉 차게 */
+  margin-left: 15px;
+  /* 제목과 버튼 사이 간격 */
+  background-color: #8224e3;
+  /* 버튼 색 */
+  color: white;
+  /* 글자색 */
+  border: none;
+  border-radius: 8px;
+  /* 모서리 둥글게 */
+  cursor: pointer;
+}
+
+.common-button2:hover {
+  background-color: #5606a7;
+  /* 마우스 올리면 색 변화 */
+}
+
+.common-button3 {
+  font-size: 1em;
+  /* 버튼 글자 크기 */
+  padding: 10px 16px;
+  /* 버튼 안 여백 (크기) */
+  width: 100%;
+  /*모바일에서 꽉 차게*/
+  margin-left: 15px;
+  /* 제목과 버튼 사이 간격 */
+  background-color: #8224e3;
+  /* 버튼 색 */
+  color: white;
+  /* 글자색 */
+  border: none;
+  border-radius: 8px;
+  /* 모서리 둥글게 */
+  cursor: pointer;
+}
+
+.common-button3:hover {
+  background-color: #5606a7;
+  /* 마우스 올리면 색 변화 */
+}
+
+/* 목록, 본문 버튼--------------------------------------------------------*/
+
+.sub-button {
+  font-size: 1em;
+  padding: 10px 16px;
+  max-width: 45vw;
+  white-space: nowrap;
+  margin-left: 15px;
+  /* 제목과 버튼 사이 간격 */
+  color: white;
+  /* 글자색 */
+  border: none;
+  border-radius: 8px;
+  /* 모서리 둥글게 */
+  cursor: pointer;
+  /* 여기에 위치 관련 속성은 넣지 않음 좌우 두개 따로 표기위해*/
+}
+
+/*시작메뉴*/
+.fixed-bottom-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #06a74b;
+}
+
+.fixed-bottom-right:hover {
+  background-color: #2f6b1e;
+}
+
+/* 돌아가기*/
+.fixed-bottom-right2 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #c1620a;
+}
+
+.fixed-bottom-right2:hover {
+  background-color: #dd4845;
+  /* 마우스 올리면 색 변화 */
+}
+
+
+/* 책갈피 버튼*/
+.fixed-bottom-left {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #8224e3;
+}
+
+.fixed-bottom-left:hover {
+  background-color: #5606a7;
+}
+
+
+/* 안내버튼*/
+.fixed-bottom-left2 {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #8b9290;
+}
+
+.fixed-bottom-left2:hover {
+  background-color: #757a79;
+}
+
+
+/* 송가,본기도,간구버튼 수직배열*/
+.fixed-bottom-left-1 {
+  position: fixed;
+  bottom: 120px;
+  left: 0px;
+  background-color: #8224e3;
+}
+
+.fixed-bottom-left-1:hover {
+  background-color: #5606a7;
+}
+
+.fixed-bottom-left-2 {
+  position: fixed;
+  bottom: 70px;
+  left: 0px;
+  background-color: #8224e3;
+}
+
+.fixed-bottom-left-2:hover {
+  background-color: #5606a7;
+}
+
+.fixed-bottom-left-3 {
+  position: fixed;
+  bottom: 20px;
+  left: 0px;
+  background-color: #8224e3;
+}
+
+.fixed-bottom-left-3:hover {
+  background-color: #5606a7;
+}
+
+/*-------------------------------------------*/
+
+/* 앱종료버튼*/
+
+/*시작메뉴*/
+.fixed-bottom-right-4 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f44336;
+}
+
+.fixed-bottom-right-4:hover {
+  background-color: #B43104;
+}
+
+/* 안쓰는 버튼*/
+.fixed-top-right {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 9999;
+  font-size: 1em;
+  padding: 10px 16px;
+  background-color: #f44336;
+  /* 빨간색 종료 버튼 */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.fixed-top-right:hover {
+  background-color: #B43104;
+  /* 마우스 올리면 색 변화 */
+}
+
+/* 맨 아래 버튼으로 가리지 않게 한칸 내려 스크롤 할 수 있게 여유를 준다*/
+.content-end-spacer {
+  height: 100px;
+  /* 하단 버튼 높이보다 조금 크게 설정 */
+}
+
+
+/*---목록 검색선택-------------------------------------------------------*/
+
+.grid1,
+.grid2,
+.grid3,
+.grid4 {
+  display: grid;
+  gap: 10px;
+  margin: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  /* 하단 여백 추가 */
+}
+
+.grid1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid1>button,
+.grid2>button,
+.grid3>button,
+.grid4>button {
+  font-size: 1em;
+  padding: 5px 10px;
+  min-height: 40px;
+  line-height: 1em;
+}
+
+/*--list목록 그리드 --------------------------*/
+
+/* 송가목록 그리드
+.grid.single-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  /* 하단 여백 추가 
+}
+
+/* 특정문 그리드
+.grid.single-column>button {
+  font-size: 1.1em;
+  /* 글씨 약간 작게 
+  text-align: left;
+  /* center 
+  padding: 10px 10px;
+  /* 여백 축소 
+  width: 100%;
+  box-sizing: border-box;
+} */

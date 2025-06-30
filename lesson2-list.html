@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>성찬례 정과표</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="grid3" id="buttonGrid"></div>
+
+  <script src="main.js" defer></script>
+
+  <script>
+    const seasonNames = [
+      "대림1", "대림2", "대림3", "대림4", "성탄일", "예수성명", "공현일", "사순수일", "사순1", "사순2", "사순3", "사순4", "사순5", "고난주일", "부활1", "부활2", "부활3", "부활4",
+      "부활5", "부활6", "승천후주", "성령강림",
+      "연중1", "연중2", "연중3", "연중4", "연중5", "연중6", "연중7", "연중8", "연중9", "연중10", "연중11", "연중12", "연중13", "연중14", "연중15", "연중16", "연중17", "연중18",
+      "연중19", "연중20", "연중21", "연중22", "연중23", "연중24", "연중25", "연중26", "연중27", "연중28", "연중29", "연중30", "연중31", "연중32", "연중33", "연중34",  "축일1-4", 
+	  "축일5-8", "축일9-12", "성인공통", "지역축일", "기원예배", "사계재", "기타축일"
+    ];
+
+    const lastAvailableSection = 63; // 입력된 마지막 section 번호
+    const grid = document.getElementById('buttonGrid');
+    seasonNames.forEach((name, index) => {
+      const sectionNumber = index + 1;
+      const btn = document.createElement('button');
+      btn.textContent = name;
+
+      btn.onclick = function () {
+        if (sectionNumber > lastAvailableSection) {
+          alert("아직 입력이 안되었습니다.");
+          return;
+        }
+        location.replace('lesson2-text.html#section' + sectionNumber);
+      };
+
+      grid.appendChild(btn);
+    });
+
+
+  </script>
+
+</body>
+
+</html>
