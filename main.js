@@ -286,79 +286,109 @@ function forceUpdate() {
 }
 
 
+//-------------------------------------------------------------
+  // 사이드 메뉴 토글 함수
+  function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("open");
+  }
 
-// 사이드 메뉴 토글 함수
-function toggleMenu() {
-  const sideMenu = document.getElementById("sideMenu");
-  sideMenu.classList.toggle("open");
-}
+  function closeMenuThenNavigate(url) {
+    const menu = document.getElementById("sideMenu");
+    if (menu && menu.classList.contains("open")) {
+      menu.classList.remove("open");
+    }
+    setTimeout(() => {
+      location.href = url;
+    }, 150);
+  }
 
+  document.addEventListener('DOMContentLoaded', function () {
+    const pageTitle = document.title;
 
-// DOM이 로드된 후 실행되는 부분
-document.addEventListener('DOMContentLoaded', function () {
-  const pageTitle = document.title;
+    // 1️⃣ 설정 HTML
+    const settingsHTML = `
+      <div id="displaySettings" class="settings-panel" style="padding: 10px;">
+        <h3 style="margin-bottom: 6px;">🛠 화면 설정</h3>
+        <label>글자 크기:
+          <select id="fontSizeSelector">
+            <option value="small">작게</option>
+            <option value="medium" selected>보통</option>
+            <option value="large">크게</option>
+          </select>
+        </label>
+        <br><br>
+        <label>줄 간격:
+          <select id="lineHeightSelector">
+            <option value="tight">좁게</option>
+            <option value="normal" selected>보통</option>
+            <option value="wide">넓게</option>
+          </select>
+        </label>
+      </div>
+    `;
 
-  const sideMenuHTML = `
-    <div id="sideMenu" class="side-menu">
-      <span class="close-btn" onclick="toggleMenu()">X</span>
-      <a href="javascript:void(0)" onclick="installPWA()" id="installPwa" style="display: none;">홈 화면에 설치</a>
-      <a href="javascript:void(0)" onclick="forceUpdate()">버전 업데이트</a>
-      <a href="javascript:void(0)" onclick="clearAllBookmarks()">책갈피 초기화</a>
-      <a href="javascript:void(0)" onclick="closeMenuThenNavigate('user-guide.html')">사용안내</a>
-      <a href="javascript:void(0)" onclick="closeMenuThenNavigate('bcp-guide.html')">성공회 기도서 앱 소개</a>
-      <a href="javascript:void(0)" onclick="closeMenuThenNavigate('install-guide.html')">설치안내</a>
-    </div>
-  `;
+    // 2️⃣ 사이드 메뉴 HTML
+    const sideMenuHTML = `
+      <div id="sideMenu" class="side-menu">
+        <span class="close-btn" onclick="toggleMenu()">X</span>
+        <a href="javascript:void(0)" onclick="installPWA()" id="installPwa" style="display: none;">홈 화면에 설치</a>
+        <a href="javascript:void(0)" onclick="forceUpdate()">버전 업데이트</a>
+        <a href="javascript:void(0)" onclick="clearAllBookmarks()">책갈피 초기화</a>
+        <a href="javascript:void(0)" onclick="closeMenuThenNavigate('user-guide.html')">사용안내</a>
+        <a href="javascript:void(0)" onclick="closeMenuThenNavigate('install-guide.html')">설치안내</a>
+        <a href="javascript:void(0)" onclick="closeMenuThenNavigate('bcp-guide.html')">성공회기도서 앱 소개</a>
+        ${settingsHTML}
+      </div>
+    `;
 
-  const navbarHTML = `
-    <div class="navbar">
-      <div class="menu-icon">☰</div>
-      <h1>${pageTitle}</h1>
-    </div>
-  `;
+    // 3️⃣ 상단바 HTML
+    const navbarHTML = `
+      <div class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <h1>${pageTitle}</h1>
+      </div>
+    `;
 
+    // 4️⃣ 삽입
+    document.body.insertAdjacentHTML('afterbegin', navbarHTML);
+    document.body.insertAdjacentHTML('beforeend', sideMenuHTML);
 
+    // 5️⃣ 설정값 불러오기
+    const fontSizeSelector = document.getElementById("fontSizeSelector");
+    const lineHeightSelector = document.getElementById("lineHeightSelector");
 
-  // prevent default for all # links
-  document.querySelectorAll('a[href="#"]').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault(); // 해시가 주소창에 추가되는 것을 막음
+    const savedFontSize = localStorage.getItem("fontSize") || "medium";
+    const savedLineHeight = localStorage.getItem("lineHeight") || "normal";
+    document.body.dataset.fontSize = savedFontSize;
+    document.body.dataset.lineHeight = savedLineHeight;
+    fontSizeSelector.value = savedFontSize;
+    lineHeightSelector.value = savedLineHeight;
+
+    fontSizeSelector.addEventListener("change", function () {
+      document.body.dataset.fontSize = this.value;
+      localStorage.setItem("fontSize", this.value);
     });
+
+    lineHeightSelector.addEventListener("change", function () {
+      document.body.dataset.lineHeight = this.value;
+      localStorage.setItem("lineHeight", this.value);
+    });
+
+    // 6️⃣ # 링크 방지
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+      });
+    });
+
+    // 7️⃣ Service Worker 등록
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('✅ Service Worker 등록 성공'))
+        .catch(err => console.error('❌ Service Worker 등록 실패:', err));
+    }
   });
-
-
-  document.body.insertAdjacentHTML('afterbegin', sideMenuHTML + navbarHTML);
-
-  const menuIcon = document.querySelector(".menu-icon");
-  const closeBtn = document.querySelector(".close-btn");
-
-  if (menuIcon && closeBtn) {
-    menuIcon.addEventListener("click", toggleMenu);
-    closeBtn.addEventListener("click", function () {
-      const sideMenu = document.getElementById("sideMenu");
-      sideMenu.classList.remove("open");
-    });
-  }
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(() => console.log('✅ Service Worker 등록 성공'))
-      .catch(err => console.error('❌ Service Worker 등록 실패:', err));
-  }
-});
-
-
-function closeMenuThenNavigate(url) {
-  const menu = document.getElementById("sideMenu");
-  if (menu && menu.classList.contains("open")) {
-    menu.classList.remove("open");
-  }
-
-  setTimeout(() => {
-    //  location.replace(url);  // ✅ 변경: href → replace
-    location.href = url;
-  }, 150);
-}
 
 
 
@@ -515,7 +545,6 @@ window.goToRememberedLesson2 = function () {
 
 
 
-
 /*앱다운 설치, 앱아이콘 설치*/
 
 let deferredPrompt = null;
@@ -557,4 +586,55 @@ window.addEventListener('appinstalled', () => {
   alert("✅ 성공회 기도서 앱이 설치되었습니다!");
 });
 
+
+/*접기 펴기 이건 성찬기도는 id 사용으로 이 코드와 충돌 아래 것으로 교체함
+document.addEventListener("DOMContentLoaded", function () {
+  const headers = document.querySelectorAll(".accordion-header");
+
+  headers.forEach(header => {
+    header.addEventListener("click", function () {
+      const content = this.nextElementSibling;
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+      if (isOpen) {
+        content.style.maxHeight = "0px";
+        this.classList.remove("open");
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        this.classList.add("open");
+
+        setTimeout(() => {
+          this.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 200);
+      }
+    });
+  });
+});
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1️⃣ 성찬기도 페이지에서는 공통 아코디언 로직 실행 안 함
+  if (location.pathname.includes("ucharist-form1")) return;
+
+  const headers = document.querySelectorAll(".accordion-header");
+
+  headers.forEach(header => {
+    header.addEventListener("click", function () {
+      const content = this.nextElementSibling;
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+      if (isOpen) {
+        content.style.maxHeight = "0px";
+        this.classList.remove("open");
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        this.classList.add("open");
+
+        setTimeout(() => {
+          this.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 200);
+      }
+    });
+  });
+});
 

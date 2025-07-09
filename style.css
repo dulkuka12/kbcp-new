@@ -1,4 +1,6 @@
 /* style.css */
+/*볼드체폰트링크*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 /* body에만 적용할 스타일 */
 body {
@@ -9,7 +11,11 @@ body {
 }
 
 /* 텍스트 선택 방지만 별도로 적용 */
-body, .body-text, .rubric, .subtitle, .big-title {
+body,
+.body-text,
+.rubric,
+.subtitle,
+.big-title {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -92,10 +98,12 @@ body, .body-text, .rubric, .subtitle, .big-title {
   position: absolute;
   top: 10px;
   right: 20px;
-  width: 44px;               /* 최소 터치 권장 크기 */
+  width: 44px;
+  /* 최소 터치 권장 크기 */
   height: 44px;
   font-size: 1.5em;
-  line-height: 44px;         /* 가운데 정렬 */
+  line-height: 44px;
+  /* 가운데 정렬 */
   text-align: center;
   cursor: pointer;
   z-index: 1002;
@@ -138,7 +146,7 @@ body, .body-text, .rubric, .subtitle, .big-title {
   left: 0;
 }
 
-/*---------------------------------------------*/
+/*사용글씨체---------------------------------------------*/
 
 .big-title {
   font-size: 2em;
@@ -157,6 +165,7 @@ body, .body-text, .rubric, .subtitle, .big-title {
   scroll-margin-top: 86px;
   /* 상단바로 가리지 않게 */
 }
+
 /*대축일*/
 .subtitle2 {
   color: #d31717;
@@ -179,6 +188,14 @@ body, .body-text, .rubric, .subtitle, .big-title {
   /* 상단바로 가리지 않게 */
 }
 
+/*어코디언 제목*/
+.subtitle4 {
+  color: #5d6d7e;
+  font-size: 1.2em;
+  margin-top: 15px;
+  scroll-margin-top: 86px;
+}
+
 .body-text {
   color: black;
   font-size: 1.2em;
@@ -186,6 +203,20 @@ body, .body-text, .rubric, .subtitle, .big-title {
   line-height: 1.6em;
   /* 줄간격 일정하게 만듬 */
 }
+/*???*/
+.blue-text {
+  color: blue;
+}
+
+/*회중응답*/
+.body-text2 {
+  color: black;
+  font-size: 1.2em;
+  margin-top: 4px;
+  line-height: 1.6em;
+  font-weight: bold;
+}
+
 
 .rubric {
   color: red;
@@ -201,6 +232,7 @@ body, .body-text, .rubric, .subtitle, .big-title {
   line-height: 1.6em;
   /* 줄간격 일정하게 만듬 */
 }
+
 /*정과표 본문*/
 .rubric3 {
   color: black;
@@ -230,69 +262,33 @@ body, .body-text, .rubric, .subtitle, .big-title {
 .common-button {
   font-size: 1em;
   padding: 10px 16px;
-  /* 버튼 안 여백 (크기) */
-  /*width: 100%;   모바일에서 꽉 차게 */
   margin-left: 15px;
-  /* 제목과 버튼 사이 간격 */
   background-color: #3374ff;
   color: white;
   border: none;
   border-radius: 8px;
-  /* 모서리 둥글게 */
   cursor: pointer;
 }
 
 .common-button:hover {
   background-color: #3339ff;
-  /* 마우스 올리면 색 변화 */
 }
 
 .common-button2 {
   font-size: 1em;
-  /* 버튼 글자 크기 */
   padding: 10px 16px;
-  /* 버튼 안 여백 (크기) */
-  /*width: 100%;   모바일에서 꽉 차게 */
   margin-left: 15px;
-  /* 제목과 버튼 사이 간격 */
   background-color: #8224e3;
-  /* 버튼 색 */
   color: white;
-  /* 글자색 */
   border: none;
   border-radius: 8px;
-  /* 모서리 둥글게 */
   cursor: pointer;
 }
 
 .common-button2:hover {
   background-color: #5606a7;
-  /* 마우스 올리면 색 변화 */
 }
 
-.common-button3 {
-  font-size: 1em;
-  /* 버튼 글자 크기 */
-  padding: 10px 16px;
-  /* 버튼 안 여백 (크기) */
-  width: 100%;
-  /*모바일에서 꽉 차게*/
-  margin-left: 15px;
-  /* 제목과 버튼 사이 간격 */
-  background-color: #8224e3;
-  /* 버튼 색 */
-  color: white;
-  /* 글자색 */
-  border: none;
-  border-radius: 8px;
-  /* 모서리 둥글게 */
-  cursor: pointer;
-}
-
-.common-button3:hover {
-  background-color: #5606a7;
-  /* 마우스 올리면 색 변화 */
-}
 
 /* 목록, 본문 버튼--------------------------------------------------------*/
 
@@ -310,31 +306,6 @@ body, .body-text, .rubric, .subtitle, .big-title {
   /* 모서리 둥글게 */
   cursor: pointer;
   /* 여기에 위치 관련 속성은 넣지 않음 좌우 두개 따로 표기위해*/
-}
-
-/*시작메뉴*/
-.fixed-bottom-right {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #06a74b;
-}
-
-.fixed-bottom-right:hover {
-  background-color: #2f6b1e;
-}
-
-/* 돌아가기*/
-.fixed-bottom-right2 {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #c1620a;
-}
-
-.fixed-bottom-right2:hover {
-  background-color: #dd4845;
-  /* 마우스 올리면 색 변화 */
 }
 
 
@@ -400,40 +371,6 @@ body, .body-text, .rubric, .subtitle, .big-title {
 
 /*-------------------------------------------*/
 
-/* 앱종료버튼*/
-
-/*시작메뉴*/
-.fixed-bottom-right-4 {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #f44336;
-}
-
-.fixed-bottom-right-4:hover {
-  background-color: #B43104;
-}
-
-/* 안쓰는 버튼*/
-.fixed-top-right {
-  position: fixed;
-  bottom: 20px;
-  right: 10px;
-  z-index: 9999;
-  font-size: 1em;
-  padding: 10px 16px;
-  background-color: #f44336;
-  /* 빨간색 종료 버튼 */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.fixed-top-right:hover {
-  background-color: #B43104;
-  /* 마우스 올리면 색 변화 */
-}
 
 /* 맨 아래 버튼으로 가리지 않게 한칸 내려 스크롤 할 수 있게 여유를 준다*/
 .content-end-spacer {
@@ -442,7 +379,7 @@ body, .body-text, .rubric, .subtitle, .big-title {
 }
 
 
-/*---목록 검색선택-------------------------------------------------------*/
+/*---목록 검색선택----------------------------*/
 
 .grid1,
 .grid2,
@@ -483,28 +420,102 @@ body, .body-text, .rubric, .subtitle, .big-title {
   line-height: 1em;
 }
 
-/*--list목록 그리드 --------------------------*/
+/*--순서접기펴기--------------------------*/
 
-/* 송가목록 그리드
-.grid.single-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding-bottom: 100px;
-  /* 하단 여백 추가 
+.accordion-header {
+  cursor: pointer;
+  background-color: #e0e0e0;
+  padding: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  scroll-margin-top: 80px;
 }
 
-/* 특정문 그리드
-.grid.single-column>button {
-  font-size: 1.1em;
-  /* 글씨 약간 작게 
-  text-align: left;
-  /* center 
-  padding: 10px 10px;
-  /* 여백 축소 
-  width: 100%;
-  box-sizing: border-box;
+.accordion-header:hover {
+  background-color: #d0d0d0;
+}
+
+/* 처음 두 개에 색을 다르게 주려는 경우 */
+.accordion-header.highlight {
+  background-color: #cacac8;
+  color: #595b56;  /* #696962;*/
+}
+
+.accordion-header.open {
+  background-color: #d4edda;
+  border-left: 5px solid #28a745;
+  color: #155724;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #f8f8f8;
+  border-left: 3px solid #888;
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+/* 들여쓰기
+.indent1 {
+  text-indent: 1em;
 } */
+
+
+/* 기본값 medium / normal 유지됨 */
+
+/* 📏 글자 크기 */
+body[data-font-size="small"] .body-text,
+body[data-font-size="small"] .body-text2,
+body[data-font-size="small"] .rubric,
+body[data-font-size="small"] .rubric2,
+body[data-font-size="small"] .rubric3,
+body[data-font-size="small"] .subtitle,
+body[data-font-size="small"] .subtitle2,
+body[data-font-size="small"] .subtitle3,
+body[data-font-size="small"] .subtitle4,
+body[data-font-size="small"] .big-title {
+  font-size: 0.9em;
+}
+
+body[data-font-size="large"] .body-text,
+body[data-font-size="large"] .body-text2,
+body[data-font-size="large"] .rubric,
+body[data-font-size="large"] .rubric2,
+body[data-font-size="large"] .rubric3,
+body[data-font-size="large"] .subtitle,
+body[data-font-size="large"] .subtitle2,
+body[data-font-size="large"] .subtitle3,
+body[data-font-size="large"] .subtitle4,
+body[data-font-size="large"] .big-title {
+  font-size: 1.4em;
+}
+
+
+/* 📐 줄간격 조절 */
+body[data-line-height="tight"] .body-text,
+body[data-line-height="tight"] .body-text2,
+body[data-line-height="tight"] .rubric,
+body[data-line-height="tight"] .rubric2,
+body[data-line-height="tight"] .rubric3,
+body[data-line-height="tight"] .subtitle,
+body[data-line-height="tight"] .subtitle2,
+body[data-line-height="tight"] .subtitle3,
+body[data-line-height="tight"] .subtitle4,
+body[data-line-height="tight"] .big-title {
+  line-height: 1.3em;
+}
+
+body[data-line-height="wide"] .body-text,
+body[data-line-height="wide"] .body-text2,
+body[data-line-height="wide"] .rubric,
+body[data-line-height="wide"] .rubric2,
+body[data-line-height="wide"] .rubric3,
+body[data-line-height="wide"] .subtitle,
+body[data-line-height="wide"] .subtitle2,
+body[data-line-height="wide"] .subtitle3,
+body[data-line-height="wide"] .subtitle4,
+body[data-line-height="wide"] .big-title {
+  line-height: 2em;
+}
+

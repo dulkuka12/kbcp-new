@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>독서후 송가</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+  <main class="content">
+
+
+    <button class="sub-button fixed-bottom-left-2"
+      onclick="rememberClosest('canticle', 'rememberedCanticle1', 'canticle-text.html')">책갈피1</button>
+    <button class="sub-button fixed-bottom-left-3"
+      onclick="rememberClosest('canticle', 'rememberedCanticle2', 'canticle-text.html')">책갈피2</button>
+
+
+    <script src="main.js" defer></script>
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+      let canticleId = params.get("canticleId");
+
+      // 해시가 canticleId처럼 쓰였으면 그걸 사용
+      if (!canticleId && window.location.hash) {
+        const hashValue = window.location.hash.substring(1); // # 제거
+
+        //hash가 "canticle"로 시작하는 경우만 필터로 간주
+        if (hashValue.startsWith("canticle")) {
+          canticleId = hashValue;
+        }
+      }
+
+      //canticleId가 결정되었으면 필터 수행
+      if (canticleId) {
+        const all = document.querySelectorAll(".subtitle, .body-text, .rubric");
+        let show = false;
+
+        all.forEach(el => {
+          if (el.classList.contains("subtitle")) {
+            show = (el.id === canticleId);
+            el.style.display = show ? "block" : "none";
+          } else {
+            el.style.display = show ? "block" : "none";
+          }
+        });
+
+        window.CanticleFiltered = true;
+      } else {
+        // 필터 없이 전체 보여줌
+        window.CanticleFiltered = false;
+      }
+    });
+
+
+
+    </script>
+  </main>
+</body>
+
+</html>
